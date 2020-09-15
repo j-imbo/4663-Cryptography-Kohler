@@ -203,15 +203,25 @@ def fractionate(poly,k):
     return outstring
 
 def defrac(adfgx,k):
-    key = list(k)
+
+    # code from Polybius.remove_duplicatess
+    newkey = []             # create a list for letters
+    for i in k:             # loop through key
+        if not i in newkey: # skip duplicates
+            newkey.append(i)
+        
+    # create a string by joining the newkey list as a string
+    kNew = (str(x) for x in newkey)
+
+    key = list(kNew)
 
     # create empty dictionary for defractionting
-    ind = sorted(range(len(key)), key=lambda k: key[k])
+    ind = sorted(range(len(key)), key=lambda k: key[kNew])
     mat = list(ind)
 
     # determine short columns and column length
-    shorts = len(adfgx) % len(k)
-    collen = int(math.ceil(len(adfgx) / len(k)))
+    shorts = len(adfgx) % len(kNew)
+    collen = int(math.ceil(len(adfgx) / len(kNew)))
 
     # reconstruct matrix
     lf = 0
@@ -231,7 +241,7 @@ def defrac(adfgx,k):
     for each in range(len(adfgx)):
         outstring += mat[i][j]
         i += 1
-        if i == len(k):
+        if i == len(kNew):
             i = 0
             j += 1
     
