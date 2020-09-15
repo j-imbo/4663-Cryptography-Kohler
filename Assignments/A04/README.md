@@ -31,4 +31,4 @@ Encrypting and decrypting using ADFGX ciphers.
 - Practical Cryptography, ADFGX Cipher:
   - http://practicalcryptography.com/ciphers/adfgx-cipher/
 
-I used the source to create lists for frequency comparisons, and then I used those lists to decrypt the cyphers.
+I used the source to guide my crafting of the algorithms.
